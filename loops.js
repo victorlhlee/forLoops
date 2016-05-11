@@ -14,23 +14,47 @@ Within the _FOR_ loop, use `console.log` to:
 
 /***bonus:** could you take the code inside of this FOR loop and encapsulate it inside of a function called `printContent` and still achieve the same result? This new function should accept two parameters.*/
 
+var presidents = ["Washington", "Adams", "Jefferson", "Madison", "Monroe"];
 
-var presidents = ['Washington', 'Adams', 'Jefferson', 'Madison', 'Monroe'];
+for(var i = 0; i<presidents.length; i++){
+  console.log("The value of i is: " + [i]);
+  console.log("The value at Index is: " + presidents[i]);
+}
+
+
+/*var presidents;
+presidents = ["Washington", "Adams", "Jefferson", "Madison", "Monroe"];
+
+for(var i=0; i<presidents.length; i++){
+  //console.log('Value of ' + [i] + ' is: ' + presidents[i]);
+   console.log('The value of i is: ' + [i]);
+   console.log('The value at Index is: ' + presidents[i]);
+}*/
+
+
+/*function printContent(index, name){
+  for(var i = 0; i<name.length; i++){
+    console.log('Mr. President at index ' + i + ' is: ' + name[i]);
+  }
+}
+
+printContent(i, presidents);*/
+
+/*var presidents = ['Washington', 'Adams', 'Jefferson', 'Madison', 'Monroe'];
 
  for (var i = 0; i<presidents.length; i++){
   console.log('The value of i is ' + i);
   //console.log('The value of i is:', i);
   console.log('The value at Index is: ' + presidents[i]);
- }
+ }*/
 
- function printContent(num, name){
+/* function printContent(num, name){
   for (var i = 0; i<name.length; i++){
-    console.log('The value is ' + i);
-    console.log('The value at Index is: ' + name[i]);
+    console.log('The value at Index ' + i + ' is: ' + name[i]);
   }
  }
 
- printContent(5, presidents);
+ printContent(5, presidents);*/
 
 /*## `The String of Numbers`
 Declare a variable named `stringOfNumbers` and set it's value to `''` (an empty String).
@@ -41,26 +65,26 @@ After the _FOR_ loop, use `console.log` to inspect your variable. In the end you
 
 **bonus:** could you take the code inside of this _FOR_ loop and encapsulate it inside of a function called `appendToString` and still achieve the same result?*/
 
-var stringOfNumbers = "";
+/*var stringOfNumbers = "";
 var numbers = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-for (var i = 0; i<numbers.length; i++){
+for (var i = 0; i<numbers.length; i++){*/
   //*/console.log(numbers[i]);
-}
+/*}*/
+/*stringOfNumbers = numbers.join("");*/ //array join() method: join the elements of an array into a string
 
-stringOfNumbers = numbers.join(""); //array join() method: join the elements of an array into a string
-console.log('version 1: ' + stringOfNumbers);
+/*console.log('version 1: ' + stringOfNumbers);*/
 
 
 
-var stringOfNumber = '';
+var stringOfNumbers = '';
 
 for(var i = 10; i<=20; i++){
   stringOfNumbers += i;
 }
-console.log('version 2: ' + stringOfNumbers);
+console.log('stringOfNumbers: ' + stringOfNumbers);
 
-function createStringNum(){
+/*function createStringNum(){
   var stringOfNumbers = '';
   for(var i = 10; i<=20; ++i){
     stringOfNumbers += i;
@@ -69,7 +93,7 @@ function createStringNum(){
 }
 
 var myString = createStringNum();
-console.log(myString);
+console.log(myString);*/
 
 /*## `Add only even numbrs to an array`
 Declare a variable named `evenNumberArray`.*/
@@ -82,7 +106,7 @@ for(var i = 0; i<=99; i++){
     sum +=i;
   }
 }
-console.log(sum);
+console.log('evenNumberArray: ' + sum);
 
 
 /*Use a _FOR_ loop to add only even numbers to an Array. Add `50` even numbers to the `evenNumberArray` starting with the value `0`.*/
@@ -101,16 +125,23 @@ using a _FOR_ loop, add the string `'nope'` to every odd index.*/
 `[ 'turn' , 'nope' , 'down' , 'nope' , 'for' , 'nope' , 'what' ]`
 ```*/
 
-var oopsArray = [ 'turn' , , 'down' , , 'for' , , 'what' ];
+var oopsArray = ['turn', , 'down', , 'for' , , 'what' ];
 
+for (var i = 0; i<oopsArray.length; i++){
+  if(i%2===1){
+    oopsArray[i] = 'nope';
+  }
+}
+console.log('oopsArray: ' +  oopsArray);
+
+/*var oopsArray = [ 'turn' , , 'down' , , 'for' , , 'what' ];
 for (var i = 0; i<oopsArray.length; i++){
   console.log(i, oopsArray[i]); //undefined values falsey values
   if(i%2===1){
     oopsArray[i] = 'nope';
   }
 }
-
-console.log('oopsArray', oopsArray.length, oopsArray);
+console.log('oopsArray', oopsArray.length, oopsArray);*/
 
 /*## `Going backwards?!`
 Using a _FOR_ loop, iterate through the Array stored at `oopsArray` **backwards**. `console.log` each value in the Array.
@@ -129,6 +160,18 @@ var oopsArray = [ 'turn' , , 'down' , , 'for' , , 'what' ];
 var backwardsArray = [];
 
 function reverse(array){
+  for(var i = oopsArray.length - 1; i>0; i--){
+    if(i%2===1){
+      backwardsArray.push('nope');
+    }else{
+      backwardsArray.push(oopsArray[i]);
+    }
+  }
+  return backwardsArray;
+}
+console.log('reverse array:  ' + reverse(oopsArray));
+
+/*function reverse(array){
   for (var i = oopsArray.length - 1; i>=0; i--){
     if(i%2 ===1){
       backwardsArray.push('nope');
@@ -139,7 +182,7 @@ function reverse(array){
   return backwardsArray;
 }
 console.log('backward: ' + reverse(oopsArray));
-
+*/
 
 /*## `isNapTime`
 Declare a variable named `isNapTime`. Set it to `false`
@@ -156,16 +199,19 @@ var isNapTime = false;
 var napSchedule = [false, false, true, false, true, true];
 
 function nap (schedule){  
-  for(var i = 0; i<schedule.length; i++){
-    if(schedule[i]){
+    if(schedule === true){
       console.log('ZzZzZzZz');
     }else{
       console.log("Gotta get to work!");
-      isNapTime = !isNapTime;
+      isNapTime = true;
     }
-  } 
+  }
+for(var i = 0; i<napSchedule.length; i++){
+  //console.log(i); 
+  nap(napSchedule[i]);
 }
-console.log(nap(napSchedule));
+
+/*console.log(nap(napSchedule));*/
 
 /*## `CopyArray - clone array values`
 Declare a variable named `copyOfValuesArray` and set it's value to be an empty array, `[]`.
@@ -184,6 +230,7 @@ function copyArray (originArray, destinationArray){
   for (var i = 0; i<originArray.length; i++){
     destinationArray.push(originArray[i]);
   }
+  return destinationArray;
 }
 
 copyArray(valuesArray, copyOfValuesArray);
@@ -212,7 +259,7 @@ var miscStorage = [ [], 'Carrots', 9, 'Beets', {}, {name: "Todd B."}, 'Mush' ];
 console.log(miscStorage);
 
 function generateArrayOfStrings(storage){
-  var str = typeof ''; //typepf operator allows you to probe the data type of its operand, such as whether a variable is a string, number or even undefined.
+  var str = typeof ''; //typeof operator allows you to probe the data type of its operand, such as whether a variable is a string, number or even undefined.
   var stringArr = [];
   for (var i = 0; i<storage.length; i++){
     if(typeof storage[i] === typeof str ){
