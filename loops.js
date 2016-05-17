@@ -75,7 +75,13 @@ for (var i = 0; i<numbers.length; i++){*/
 
 /*console.log('version 1: ' + stringOfNumbers);*/
 
+/*function beerpong(player1, player2) {
+  if (player2 === "Victor") {
+    console.log("You lose!");
+  }
+}
 
+beerpong("Chaz", "Victor");*/
 
 var stringOfNumbers = '';
 
@@ -98,15 +104,16 @@ console.log(myString);*/
 /*## `Add only even numbrs to an array`
 Declare a variable named `evenNumberArray`.*/
 
-var evenNumberArray;
-var sum = 0;
+var evenNumberArray = [];
+/*var sum = 0;*/
 
 for(var i = 0; i<=99; i++){
   if(i%2===0){
-    sum +=i;
+    evenNumberArray.push(i);
+    //sum +=i;
   }
 }
-console.log('evenNumberArray: ' + sum);
+console.log('evenNumberArray: ' + evenNumberArray);
 
 
 /*Use a _FOR_ loop to add only even numbers to an Array. Add `50` even numbers to the `evenNumberArray` starting with the value `0`.*/
@@ -133,6 +140,9 @@ for (var i = 0; i<oopsArray.length; i++){
   }
 }
 console.log('oopsArray: ' +  oopsArray);
+
+
+
 
 /*var oopsArray = [ 'turn' , , 'down' , , 'for' , , 'what' ];
 for (var i = 0; i<oopsArray.length; i++){
